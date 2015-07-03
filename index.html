@@ -1,0 +1,48 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title></title>
+    <link href="./css/style.min.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="edit-area">
+    <form>
+        <div>
+            <input type="text" name="title" placeholder="标题" required/><br>
+            <input type="text" name="author" placeholder="作者" required/><br>
+        </div>
+
+        <button type="submit" id="btn-save">保存</button>
+
+        <div id="content" contenteditable="true">
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="./libs/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="./libs/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="./libs/angularjs/angular.min.js"></script>
+<script type="text/javascript" src="./libs/jquery-validate/dist/jquery.validate.min.js"></script>
+<script type="text/javascript" src="./libs/jquery-form/jquery.form.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var $form = $('form');
+
+        $('form').ajaxForm({
+            data:{content:CKEDITOR.instances.content.getData()},
+            dataType:'json',
+            beforeSubmit:function(){
+                return $form.validate();
+            },
+            success:function(){
+                alert('保存成功');
+            },
+            error:function(){
+                alert('服务器错误，保存失败');
+            }
+        });
+    })
+</script>
+</body>
+</html>

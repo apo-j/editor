@@ -1,0 +1,19 @@
+#edit-area{
+  width:500px;
+  margin:20px auto;
+  input[type="text"]{
+    width: 90%;
+  }
+  #btn-save{
+    float:right;
+  }
+  #content{
+    width:375px;
+    height:667px;
+    border:1px solid black;
+    overflow-y: auto;
+    margin: 10px auto;
+    padding:5px;
+  }
+}
+
